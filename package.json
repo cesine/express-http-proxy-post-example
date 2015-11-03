@@ -9,9 +9,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.14.1",
     "express": "^4.13.3",
-    "express-http-proxy": "^0.6.0"
+    "express-http-proxy": "^0.6.0",
+    "swagger-framework": "^0.19.0"
   },
   "devDependencies": {
     "request": "^2.65.0"
