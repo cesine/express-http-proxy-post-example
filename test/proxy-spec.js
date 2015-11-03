@@ -14,7 +14,7 @@ describe('proxied routes', function() {
       qs: MOCK_DATA
     }, function(err, res, body) {
       expect(err).toBeNull();
-      expect(body).toEqual('{"some":"info","method":"GET","original":true}');
+      expect(body).toEqual('{"some":"info","method":"GET","original":true,"proxied":true}');
       done();
     });
   }, 5000);
@@ -31,7 +31,8 @@ describe('proxied routes', function() {
       expect(body).toEqual({
         some: 'info',
         method: 'POST',
-        original: true
+        original: true,
+        proxied: true
       });
 
       done();

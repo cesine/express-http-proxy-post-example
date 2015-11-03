@@ -4,9 +4,21 @@ var proxy = require('express-http-proxy');
 var app = express();
 var SERVER_URL = 'http://localhost:8000';
 
-app.get('/original', proxy(SERVER_URL));
+app.get('/original', proxy(SERVER_URL, {
+  intercept: function(rsp, data, req, res, callback) {
+    data = JSON.parse(data.toString('utf8'));
+    data.proxied = true;
+    callback(null, JSON.stringify(data));
+  }
+}));
 
-app.post('/original', proxy(SERVER_URL));
+app.post('/original', proxy(SERVER_URL, {
+  intercept: function(rsp, data, req, res, callback) {
+    data = JSON.parse(data.toString('utf8'));
+    data.proxied = true;
+    callback(null, JSON.stringify(data));
+  }
+}));
 
 var server = app.listen(8001, function() {
   var host = server.address().address;
